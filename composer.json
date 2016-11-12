@@ -8,14 +8,14 @@
     "guid"
   ],
   "type": "yii2-extension",
-  "license": "Apache-2.0",
+  "homepage": "https://github.com/ARACOOOL/yii2-uuid",
+  "license": "MIT",
   "authors": [
     {
       "name": "Askar Fuzaylov",
       "email": "tkdforever@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
   "require": {
     "php": ">=7.0",
     "yiisoft/yii2": "*"
