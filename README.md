@@ -40,7 +40,7 @@ public function behaviors()
 }
 ```
 
-```
+```php
 Uuid::v3('1546058f-5a25-4334-85ae-e68f2a44bbaf', 'SomeRandomString');
 Uuid::v5('1546058f-5a25-4334-85ae-e68f2a44bbaf', 'SomeRandomString');
 Uuid::v4();
@@ -48,16 +48,16 @@ Uuid::v4();
 
 ### Validator usage
 
-```
+```php
 /**
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            ...
-            ['attribute_id', '\aracoool\yii2-uuid\UuidValidator'],
-            ...
-        ];
-    }
+ * @return array
+ */
+ public function rules()
+ {
+     return [
+         ...
+         ['attribute_id', '\aracoool\yii2-uuid\UuidValidator'],
+         ...
+     ];
+ }
 ```
