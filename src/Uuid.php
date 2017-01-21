@@ -9,20 +9,6 @@ namespace aracoool\uuid;
 class Uuid
 {
     /**
-     * @param int $length
-     * @throws \InvalidArgumentException
-     * @return string
-     */
-    public static function randomBytes(int $length)
-    {
-        if (!is_int($length) || $length < 1) {
-            throw new \InvalidArgumentException('Invalid first parameter ($length)');
-        }
-
-        return random_bytes($length);
-    }
-
-    /**
      * Generate v3 UUID
      *
      * Version 3 UUIDs are named based. They require a namespace (another
@@ -65,8 +51,7 @@ class Uuid
      */
     public static function v4() : string
     {
-        $bytes = self::randomBytes(16);
-        return self::fromBinary($bytes);
+        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', random_int(0, 0xffff), random_int(0, 0xffff), random_int(0, 0xffff), random_int(0, 0x0fff) | 0x4000, random_int(0, 0x3fff) | 0x8000, random_int(0, 0xffff), random_int(0, 0xffff), random_int(0, 0xffff));
     }
 
     /**
@@ -101,8 +86,8 @@ class Uuid
     }
 
     /**
-     * @param $uuid
-     * @return mixed
+     * @param string $uuid
+     * @return string
      */
     public static function hex2Bin(string $uuid)
     {
@@ -129,7 +114,7 @@ class Uuid
      * @param string $uuid
      * @return bool
      */
-    public static function is_valid(string $uuid)
+    public static function isValid(string $uuid)
     {
         return preg_match('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?' .
             '[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $uuid) === 1;
