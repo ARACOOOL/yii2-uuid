@@ -23,7 +23,7 @@ class Uuid
      */
     public static function v3(string $namespace, string $name)
     {
-        if (!self::is_valid($namespace)) {
+        if (!self::isValid($namespace)) {
             throw new \InvalidArgumentException($namespace . ' is invalid');
         }
 
@@ -68,7 +68,7 @@ class Uuid
      */
     public static function v5(string $namespace, string $name)
     {
-        if (!self::is_valid($namespace)) {
+        if (!self::isValid($namespace)) {
             throw new \InvalidArgumentException($namespace . ' is invalid');
         }
 
