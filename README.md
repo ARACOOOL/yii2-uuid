@@ -25,7 +25,7 @@ composer require aracoool/yii2-uuid
 
 ### Behavior usage
 
-```
+```php
 /**
  * @return array
  */
