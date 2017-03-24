@@ -65,7 +65,7 @@ class UuidBehavior extends AttributeBehavior
             throw new InvalidConfigException('Invalid version of UUID');
         }
 
-        $this->value = call_user_func([Uuid::class, $this->version], $this->nameAttribute, $this->nameAttribute);
+        $this->value = call_user_func([Uuid::class, $this->version], $this->namespace, $this->nameAttribute);
         return $this->value;
     }
 }
