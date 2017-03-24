@@ -23,7 +23,7 @@ composer require aracoool/yii2-uuid
 
 ## Usage
 
-### Behavior usage
+### Behavior usage for V4
 
 ```php
 /**
@@ -33,7 +33,28 @@ public function behaviors()
 {
     return [
         [
-            'class' => UuidBehavior::class
+            'class' => UuidBehavior::class,
+            'version' => Uuid::V4
+        ],
+        ...
+    ];
+}
+```
+
+### Behavior usage for V3 and V5
+
+```php
+/**
+ * @return array
+ */
+public function behaviors()
+{
+    return [
+        [
+            'class' => UuidBehavior::class,
+            'version' => Uuid::V3, // Uuid::V5
+            'namespace' => Uuid::NAMESPACE_NIL,
+            'nameAttribute' => 'title' // Value of this attribute SHOULD be unique in your database
         ],
         ...
     ];
@@ -41,8 +62,10 @@ public function behaviors()
 ```
 
 ```php
-Uuid::v3('1546058f-5a25-4334-85ae-e68f2a44bbaf', 'SomeRandomString');
-Uuid::v5('1546058f-5a25-4334-85ae-e68f2a44bbaf', 'SomeRandomString');
+Uuid::v3(Uuid::NAMESPACE_URL, 'http://example.com/');
+Uuid::v5(Uuid::NAMESPACE_DSN, 'www.google.com');
+Uuid::v3(Uuid::NAMESPACE_OID, '1.3.6.1');
+Uuid::v5(Uuid::NAMESPACE_X500, 'c=ca');
 Uuid::v4();
 ```
 

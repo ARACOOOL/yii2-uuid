@@ -9,6 +9,31 @@ namespace aracoool\uuid;
 class Uuid
 {
     /**
+     * @var string DNS namespace from RFC 4122 appendix C.
+     */
+    const NAMESPACE_DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+    /**
+     * @var string URL namespace from RFC 4122 appendix C.
+     */
+    const NAMESPACE_URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+    /**
+     * @var string ISO OID namespace from RFC 4122 appendix C.
+     */
+    const NAMESPACE_OID = '6ba7b812-9dad-11d1-80b4-00c04fd430c8';
+    /**
+     * @var string X.500 namespace from RFC 4122 appendix C.
+     */
+    const NAMESPACE_X500 = '6ba7b814-9dad-11d1-80b4-00c04fd430c8';
+    /**
+     * @var string NULL UUID string from RFC 4122.
+     */
+    const NAMESPACE_NIL = '00000000-0000-0000-0000-000000000000';
+
+    const V3 = 'v3';
+    const V4 = 'v4';
+    const V5 = 'v5';
+
+    /**
      * Generate v3 UUID
      *
      * Version 3 UUIDs are named based. They require a namespace (another
@@ -24,20 +49,18 @@ class Uuid
     public static function v3(string $namespace, string $name)
     {
         if (!self::isValid($namespace)) {
-            throw new \InvalidArgumentException($namespace . ' is invalid');
+            throw new \InvalidArgumentException('Namespace ' . $namespace . ' is invalid');
         }
 
         // Get hexadecimal components of namespace
-        $nhex = str_replace(array('-', '{', '}'), '', $namespace);
+        $nhex = str_replace(['-', '{', '}'], '', $namespace);
         $nstr = '';
         $nhexLen = strlen($nhex);
         for ($i = 0; $i < $nhexLen; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
 
-        // Calculate hash value
-        $hash = md5($nstr . $name, true);
-        return self::fromBinary($hash);
+        return self::fromBinary(md5($nstr . $name, true));
     }
 
     /**
@@ -69,20 +92,18 @@ class Uuid
     public static function v5(string $namespace, string $name)
     {
         if (!self::isValid($namespace)) {
-            throw new \InvalidArgumentException($namespace . ' is invalid');
+            throw new \InvalidArgumentException('Namespace ' . $namespace . ' is invalid');
         }
 
         // Get hexadecimal components of namespace
-        $nhex = str_replace(array('-', '{', '}'), '', $namespace);
+        $nhex = str_replace(['-', '{', '}'], '', $namespace);
         $nstr = '';
         $nhexLen = strlen($nhex);
         for ($i = 0; $i < $nhexLen; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
 
-        // Calculate hash value
-        $hash = substr(sha1($nstr . $name, true), 0, 16);
-        return self::fromBinary($hash);
+        return self::fromBinary(substr(sha1($nstr . $name, true), 0, 16));
     }
 
     /**
