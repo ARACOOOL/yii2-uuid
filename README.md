@@ -1,5 +1,6 @@
 # aracoool/yii2-uuid
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/aracoool/yii2-uuid.svg)](https://packagist.org/packages/aracoool/yii2-uuid)
 [![Packagist](https://img.shields.io/packagist/dt/aracoool/yii2-uuid.svg?style=flat-square)]()
 
 Yii 2 UUID Extension. A PHP 7.0+ library for generating RFC 4122 version 3, 4, and 5 universally unique identifiers (UUID).
