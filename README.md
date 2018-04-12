@@ -42,6 +42,8 @@ public function behaviors()
 ### Behavior usage for V3 and V5
 
 ```php
+use \aracoool\yii2-uuid\UuidBehavior
+
 /**
  * @return array
  */
@@ -60,6 +62,8 @@ public function behaviors()
 ```
 
 ```php
+use \aracoool\yii2-uuid\Uuid
+
 Uuid::v3(Uuid::NAMESPACE_URL, 'http://example.com/');
 Uuid::v5(Uuid::NAMESPACE_DSN, 'www.google.com');
 Uuid::v3(Uuid::NAMESPACE_OID, '1.3.6.1');
@@ -70,6 +74,8 @@ Uuid::v4();
 ### Validator usage
 
 ```php
+use \aracoool\yii2-uuid\UuidValidator;
+
 /**
  * @return array
  */
@@ -77,7 +83,7 @@ Uuid::v4();
  {
      return [
          ...
-         ['attribute_id', '\aracoool\yii2-uuid\UuidValidator'],
+         ['attribute_id', UuidValidator::class],
          ...
      ];
  }
