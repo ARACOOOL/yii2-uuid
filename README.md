@@ -24,6 +24,8 @@ composer require --prefer-dist aracoool/yii2-uuid
 ### Behavior usage for V4
 
 ```php
+use \aracoool\yii2-uuid\UuidBehavior
+
 /**
  * @return array
  */
