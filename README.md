@@ -15,7 +15,7 @@ Much inspiration for this library came from the [Java][javauuid] and [Python][py
 
 ## Installation
 
-The preferred method of installation is via [Packagist][https://packagist.org] and [Composer][https://getcomposer.org/]. Run the following command to install the package and add it as a requirement to your project's `composer.json`:
+The preferred method of installation is via [Packagist](https://packagist.org) and [Composer](https://getcomposer.org/). Run the following command to install the package and add it as a requirement to your project's `composer.json`:
 
 ```bash
 composer require --prefer-dist aracoool/yii2-uuid
